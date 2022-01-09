@@ -20,11 +20,19 @@ namespace Foustiga.WPF.Scheduler.API
         {
             //CultureInfo _culture = (CultureInfo)CultureInfo.CurrentCulture.Clone();
             //CultureInfo _uiculture = (CultureInfo)CultureInfo.CurrentUICulture.Clone();
-            //_culture.DateTimeFormat.FirstDayOfWeek = DayOfWeek.Monday;
-            //_uiculture.DateTimeFormat.FirstDayOfWeek = DayOfWeek.Monday;
+            //_culture = new CultureInfo("fr");
+            //_uiculture = new CultureInfo("fr");
 
             //System.Threading.Thread.CurrentThread.CurrentCulture = _culture;
             //System.Threading.Thread.CurrentThread.CurrentUICulture = _uiculture;
+
+            ////CultureInfo _culture = (CultureInfo)CultureInfo.CurrentCulture.Clone();
+            ////CultureInfo _uiculture = (CultureInfo)CultureInfo.CurrentUICulture.Clone();
+            ////_culture.DateTimeFormat.FirstDayOfWeek = DayOfWeek.Monday;
+            ////_uiculture.DateTimeFormat.FirstDayOfWeek = DayOfWeek.Monday;
+
+            ////System.Threading.Thread.CurrentThread.CurrentCulture = _culture;
+            ////System.Threading.Thread.CurrentThread.CurrentUICulture = _uiculture;
         }
 
         //public IRecurrence_ViewModel Scheduler()
@@ -52,16 +60,18 @@ namespace Foustiga.WPF.Scheduler.API
 
         public static IRecurrenceInfo CreateRecurrenceInfo()
         {
+            DataModel = null;
             return DataModel;
         }
         private static IRecurrenceInfo dataModel;
-        private static IRecurrenceInfo DataModel
+        public static IRecurrenceInfo DataModel
         {
             get
             {
                 if (dataModel == null) { dataModel = ModuleCompositionRoot.BeginLifetimeScope().Resolve<IRecurrenceInfo>(); }
                 return dataModel;
             }
+            private set { dataModel = value; }
         }
 
 
@@ -119,16 +129,6 @@ namespace Foustiga.WPF.Scheduler.API
                     lastDate = nextOccurrence;
                 }
             }
-
-
-            //DateTime nextOccurrence;
-            //for (int i = 1; i <= nbOccurrences; i++)
-            //{
-            //    nextOccurrence = businessLogic.GetNextOccurrence(recurrenceInfo, lastDate);
-            //    returnValues.Add(nextOccurrence);
-            //    lastDate = nextOccurrence;
-            //}
-
 
             return returnValues;
         }

@@ -1,5 +1,6 @@
 ﻿
 using Foustiga.WPF.Scheduler.API;
+using Foustiga.WPF.Scheduler.Foundation.Enums;
 using Foustiga.WPF.Scheduler.Foundation.ViewModel;
 
 using System;
@@ -393,32 +394,88 @@ namespace Foustiga.WPF.Scheduler
     #endregion Converters
 
 
+
     public enum Sub_WeekDays
     {
+        [EnumInfo(ResourceType = typeof(Assets.Resources),//where Resources is the Resources file to look into.
+            Display = nameof(Assets.Resources.Enum_WeekDays_Monday))]
         Monday = WeekDays.Monday,
+
+        [EnumInfo(ResourceType = typeof(Assets.Resources),//where Resources is the Resources file to look into.
+           Display = nameof(Assets.Resources.Enum_WeekDays_Tuesday))]
         Tuesday = WeekDays.Tuesday,
+
+        [EnumInfo(ResourceType = typeof(Assets.Resources),//where Resources is the Resources file to look into.
+            Display = nameof(Assets.Resources.Enum_WeekDays_Wednesday))]
         Wednesday = WeekDays.Wednesday,
+
+        [EnumInfo(ResourceType = typeof(Assets.Resources),//where Resources is the Resources file to look into.
+            Display = nameof(Assets.Resources.Enum_WeekDays_Thursday))]
         Thursday = WeekDays.Thursday,
+
+        [EnumInfo(ResourceType = typeof(Assets.Resources),//where Resources is the Resources file to look into.
+            Display = nameof(Assets.Resources.Enum_WeekDays_Friday))]
         Friday = WeekDays.Friday,
+
+        [EnumInfo(ResourceType = typeof(Assets.Resources),//where Resources is the Resources file to look into.
+            Display = nameof(Assets.Resources.Enum_WeekDays_Saturday))]
         Saturday = WeekDays.Saturday,
+
+        [EnumInfo(ResourceType = typeof(Assets.Resources),//where Resources is the Resources file to look into.
+            Display = nameof(Assets.Resources.Enum_WeekDays_Sunday))]
         Sunday = WeekDays.Sunday,
-        //WeekendDays = WeekDays.WeekendDays,
-        //WorkDays = WeekDays.WorkDays,
+        //WeekendDay = WeekDays.WeekendDays,
+        //WorkDay = WeekDays.WorkDays,
     }
 
     public enum MonthsList
     {
+        [EnumInfo(ResourceType = typeof(Assets.Resources),//where Resources is the Resources file to look into.
+            Display = nameof(Assets.Resources.Enum_Month_January))]
         January = 1,
+
+        [EnumInfo(ResourceType = typeof(Assets.Resources),//where Resources is the Resources file to look into.
+            Display = nameof(Assets.Resources.Enum_Month_February))]
         February,
+
+        [EnumInfo(ResourceType = typeof(Assets.Resources),//where Resources is the Resources file to look into.
+            Display = nameof(Assets.Resources.Enum_Month_March))]
         March,
+
+        [EnumInfo(ResourceType = typeof(Assets.Resources),//where Resources is the Resources file to look into.
+            Display = nameof(Assets.Resources.Enum_Month_April))]
         April,
+
+        [EnumInfo(ResourceType = typeof(Assets.Resources),//where Resources is the Resources file to look into.
+            Display = nameof(Assets.Resources.Enum_Month_May))]
         May,
+
+        [EnumInfo(ResourceType = typeof(Assets.Resources),//where Resources is the Resources file to look into.
+            Display = nameof(Assets.Resources.Enum_Month_June))]
         June,
+
+        [EnumInfo(ResourceType = typeof(Assets.Resources),//where Resources is the Resources file to look into.
+            Display = nameof(Assets.Resources.Enum_Month_July))]
         July,
+
+        [EnumInfo(ResourceType = typeof(Assets.Resources),//where Resources is the Resources file to look into.
+            Display = nameof(Assets.Resources.Enum_Month_August))]
         August,
+
+        [EnumInfo(ResourceType = typeof(Assets.Resources),//where Resources is the Resources file to look into.
+            Display = nameof(Assets.Resources.Enum_Month_September))]
         September,
+
+        [EnumInfo(ResourceType = typeof(Assets.Resources),//where Resources is the Resources file to look into.
+            Display = nameof(Assets.Resources.Enum_Month_October))]
         October,
+
+        [EnumInfo(ResourceType = typeof(Assets.Resources),//where Resources is the Resources file to look into.
+            Display = nameof(Assets.Resources.Enum_Month_November))]
         November,
+
+        [EnumInfo(ResourceType = typeof(Assets.Resources),//where Resources is the Resources file to look into.
+            Display = nameof(Assets.Resources.Enum_Month_December))]
         December,
     }
 

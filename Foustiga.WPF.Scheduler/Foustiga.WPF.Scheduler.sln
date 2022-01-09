@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foustiga.WPF.Scheduler", "Foustiga.WPF.Scheduler\Foustiga.WPF.Scheduler.csproj", "{BFA5DBE0-0561-449E-B090-10E07E3990B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Foustiga.WPF.Scheduler", "Foustiga.WPF.Scheduler\Foustiga.WPF.Scheduler.csproj", "{BFA5DBE0-0561-449E-B090-10E07E3990B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foustiga.WPF.Scheduler.Demo", "Foustiga.WPF.Scheduler.Demo\Foustiga.WPF.Scheduler.Demo.csproj", "{293452A7-BD5B-4727-AA03-C48D3DD90B97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foustiga.WPF.Scheduler.Tests", "Foustiga.WPF.Scheduler.Tests\Foustiga.WPF.Scheduler.Tests.csproj", "{4F63F4BF-A3DF-420A-9B35-3BD3EBFA2F38}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{BFA5DBE0-0561-449E-B090-10E07E3990B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFA5DBE0-0561-449E-B090-10E07E3990B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFA5DBE0-0561-449E-B090-10E07E3990B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{293452A7-BD5B-4727-AA03-C48D3DD90B97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{293452A7-BD5B-4727-AA03-C48D3DD90B97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{293452A7-BD5B-4727-AA03-C48D3DD90B97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{293452A7-BD5B-4727-AA03-C48D3DD90B97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F63F4BF-A3DF-420A-9B35-3BD3EBFA2F38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F63F4BF-A3DF-420A-9B35-3BD3EBFA2F38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F63F4BF-A3DF-420A-9B35-3BD3EBFA2F38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F63F4BF-A3DF-420A-9B35-3BD3EBFA2F38}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

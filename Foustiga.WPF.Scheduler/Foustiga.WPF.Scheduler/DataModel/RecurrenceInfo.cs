@@ -16,11 +16,13 @@ namespace Foustiga.WPF.Scheduler.DataModel
             Type = ReccurrenceType.Weekly;
             WeekDays = WeekDays.Monday;
             DayNumber = 1;
+            Month = 1;
 
             //Reccurrence range
             Start = DateTime.Today;
-            Range = RecurrenceRange.OccurrenceCount;
-            OccurrenceCount = 10;
+            Range = RecurrenceRange.NoEndDate;
+            //Range = RecurrenceRange.OccurrenceCount;
+            //OccurrenceCount = 10;
             End = Start.AddDays(1);
         }
         public ReccurrenceType Type { get => GetProperty<ReccurrenceType>();

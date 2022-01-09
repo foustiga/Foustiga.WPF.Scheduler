@@ -33,43 +33,43 @@ namespace Foustiga.WPF.Scheduler
                 if (recurrenceInfo.WeekDays.HasFlag(WeekDays.Monday))
                 {
                     nextOccurrence = lastDate.Next(DayOfWeek.Monday);
-                    if (GetWeekNumberInYear(nextOccurrence) > currentWeekNumber) { nextOccurrence = nextOccurrence.AddDays(7 * (recurrenceInfo.Periodicity - 1)); }
+                    if (GetWeekNumberInYear(nextOccurrence) != currentWeekNumber) { nextOccurrence = nextOccurrence.AddDays(7 * (recurrenceInfo.Periodicity - 1)); }
                     nextOccurrences.Add(nextOccurrence);
                 }
                 if (recurrenceInfo.WeekDays.HasFlag(WeekDays.Tuesday))
                 {
                     nextOccurrence = lastDate.Next(DayOfWeek.Tuesday);
-                    if (GetWeekNumberInYear(nextOccurrence) > currentWeekNumber) { nextOccurrence = nextOccurrence.AddDays(7 * (recurrenceInfo.Periodicity - 1)); }
+                    if (GetWeekNumberInYear(nextOccurrence) != currentWeekNumber) { nextOccurrence = nextOccurrence.AddDays(7 * (recurrenceInfo.Periodicity - 1)); }
                     nextOccurrences.Add(nextOccurrence);
                 }
                 if (recurrenceInfo.WeekDays.HasFlag(WeekDays.Wednesday))
                 {
                     nextOccurrence = lastDate.Next(DayOfWeek.Wednesday);
-                    if (GetWeekNumberInYear(nextOccurrence) > currentWeekNumber) { nextOccurrence = nextOccurrence.AddDays(7 * (recurrenceInfo.Periodicity - 1)); }
+                    if (GetWeekNumberInYear(nextOccurrence) != currentWeekNumber) { nextOccurrence = nextOccurrence.AddDays(7 * (recurrenceInfo.Periodicity - 1)); }
                     nextOccurrences.Add(nextOccurrence);
                 }
                 if (recurrenceInfo.WeekDays.HasFlag(WeekDays.Thursday))
                 {
                     nextOccurrence = lastDate.Next(DayOfWeek.Thursday);
-                    if (GetWeekNumberInYear(nextOccurrence) > currentWeekNumber) { nextOccurrence = nextOccurrence.AddDays(7 * (recurrenceInfo.Periodicity - 1)); }
+                    if (GetWeekNumberInYear(nextOccurrence) != currentWeekNumber) { nextOccurrence = nextOccurrence.AddDays(7 * (recurrenceInfo.Periodicity - 1)); }
                     nextOccurrences.Add(nextOccurrence);
                 }
                 if (recurrenceInfo.WeekDays.HasFlag(WeekDays.Friday))
                 {
                     nextOccurrence = lastDate.Next(DayOfWeek.Friday);
-                    if (GetWeekNumberInYear(nextOccurrence) > currentWeekNumber) { nextOccurrence = nextOccurrence.AddDays(7 * (recurrenceInfo.Periodicity - 1)); }
+                    if (GetWeekNumberInYear(nextOccurrence) != currentWeekNumber) { nextOccurrence = nextOccurrence.AddDays(7 * (recurrenceInfo.Periodicity - 1)); }
                     nextOccurrences.Add(nextOccurrence);
                 }
                 if (recurrenceInfo.WeekDays.HasFlag(WeekDays.Saturday))
                 {
                     nextOccurrence = lastDate.Next(DayOfWeek.Saturday);
-                    if (GetWeekNumberInYear(nextOccurrence) > currentWeekNumber) { nextOccurrence = nextOccurrence.AddDays(7 * (recurrenceInfo.Periodicity - 1)); }
+                    if (GetWeekNumberInYear(nextOccurrence) != currentWeekNumber) { nextOccurrence = nextOccurrence.AddDays(7 * (recurrenceInfo.Periodicity - 1)); }
                     nextOccurrences.Add(nextOccurrence);
                 }
                 if (recurrenceInfo.WeekDays.HasFlag(WeekDays.Sunday))
                 {
                     nextOccurrence = lastDate.Next(DayOfWeek.Sunday);
-                    if (GetWeekNumberInYear(nextOccurrence) > currentWeekNumber) { nextOccurrence = nextOccurrence.AddDays(7 * (recurrenceInfo.Periodicity - 1)); }
+                    if (GetWeekNumberInYear(nextOccurrence) != currentWeekNumber) { nextOccurrence = nextOccurrence.AddDays(7 * (recurrenceInfo.Periodicity - 1)); }
                     nextOccurrences.Add(nextOccurrence);
                 }
                 nextOccurrence = (from DateTime oc in nextOccurrences orderby oc where oc > lastDate select oc).FirstOrDefault();
@@ -91,26 +91,6 @@ namespace Foustiga.WPF.Scheduler
                             if (maxDaysInMonth > recurrenceInfo.DayNumber) { nextOccurrence = new DateTime(nextOccurrence.Year, nextOccurrence.Month, recurrenceInfo.DayNumber); }
                             else { nextOccurrence = new DateTime(nextOccurrence.Year, nextOccurrence.Month, maxDaysInMonth); }
                     }
-                        //nextOccurrence = nextOccurrence.AddDays(1).AddMonths(recurrenceInfo.Periodicity).AddDays(-1);
-                        //if (nextOccurrence.Day > recurrenceInfo.DayNumber) { nextOccurrence = new DateTime(nextOccurrence.Year, nextOccurrence.Month, recurrenceInfo.DayNumber); }
-
-
-                    //if (recurrenceInfo.DayNumber > lastDate.Day)
-                    //{//Check that the DayNumber is not out of range for shorter months.
-                    //    int maxDaysInMonth = DateTime.DaysInMonth(lastDate.Year, lastDate.Month);
-                    //    if (maxDaysInMonth >= recurrenceInfo.DayNumber) { nextOccurrence = new DateTime(lastDate.Year, lastDate.Month, recurrenceInfo.DayNumber); }
-                    //    else
-                    //    {
-                    //        nextOccurrence = new DateTime(lastDate.Year, lastDate.Month, maxDaysInMonth);
-                    //        nextOccurrence = nextOccurrence.AddDays(1).AddMonths(recurrenceInfo.Periodicity).AddDays(-1);
-                    //        if (nextOccurrence.Day > recurrenceInfo.DayNumber) { nextOccurrence = new DateTime(nextOccurrence.Year, nextOccurrence.Month, recurrenceInfo.DayNumber); }
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    nextOccurrence = new DateTime(lastDate.Year, lastDate.Month, recurrenceInfo.DayNumber);
-                    //    nextOccurrence = nextOccurrence.AddMonths(recurrenceInfo.Periodicity);
-                    //}
                 }
                 else
                 {
@@ -121,13 +101,37 @@ namespace Foustiga.WPF.Scheduler
                     else if (recurrenceInfo.WeekOfMonth == WeekOfMonth.Fourth) { weekNumberInTheMonth = 4; }
                     else if (recurrenceInfo.WeekOfMonth == WeekOfMonth.Last) { weekNumberInTheMonth = 5; }
 
-                    nextOccurrence = GetNextWeekDayInNthWeekInTheMonth(recurrenceInfo: recurrenceInfo, fromDate: lastDate, weekNumberInTheMonth: weekNumberInTheMonth);
-
-                    if (nextOccurrence <= lastDate) //if we got back a former date, go to next periodicity
-                    {
-                        lastDate = lastDate.AddMonths(recurrenceInfo.Periodicity);
+                    //if (recurrenceInfo.WeekDays.HasFlag(WeekDays.WorkDays) )
+                    //{
+                    //    if (recurrenceInfo.WeekOfMonth == WeekOfMonth.Last) { weekNumberInTheMonth = 30; }
+                    //    nextOccurrence = GetNthWorkDayInTheMonth(recurrenceInfo: recurrenceInfo, fromDate: lastDate, nthWorkingDay: weekNumberInTheMonth);
+                    //    if (nextOccurrence <= lastDate) //if we got back a former date, go to next periodicity
+                    //    {
+                    //      //  lastDate = lastDate.AddMonths(recurrenceInfo.Periodicity);
+                    //        lastDate = new DateTime(lastDate.Year, lastDate.Month, 1).AddMonths(recurrenceInfo.Periodicity);
+                    //        nextOccurrence = GetNthWorkDayInTheMonth(recurrenceInfo: recurrenceInfo, fromDate: lastDate, nthWorkingDay: weekNumberInTheMonth);
+                    //    }
+                    //}
+                    //else if (recurrenceInfo.WeekDays.HasFlag(WeekDays.WeekendDays))
+                    //{
+                    //    if (recurrenceInfo.WeekOfMonth == WeekOfMonth.Last) { weekNumberInTheMonth = 30; }
+                    //    nextOccurrence = GetNextWeekendDayInNthWeekInTheMonth(recurrenceInfo: recurrenceInfo, fromDate: lastDate, weekNumberInTheMonth: weekNumberInTheMonth);
+                    //    if (nextOccurrence <= lastDate) //if we got back a former date, go to next periodicity
+                    //    {
+                    //        lastDate = lastDate.AddMonths(recurrenceInfo.Periodicity);
+                    //        nextOccurrence = GetNextWeekendDayInNthWeekInTheMonth(recurrenceInfo: recurrenceInfo, fromDate: lastDate, weekNumberInTheMonth: weekNumberInTheMonth);
+                    //    }
+                    //}
+                    //else
+                    //{
                         nextOccurrence = GetNextWeekDayInNthWeekInTheMonth(recurrenceInfo: recurrenceInfo, fromDate: lastDate, weekNumberInTheMonth: weekNumberInTheMonth);
-                    }
+                        if (nextOccurrence <= lastDate) //if we got back a former date, go to next periodicity
+                        {
+                            lastDate = lastDate.AddMonths(recurrenceInfo.Periodicity);
+                            nextOccurrence = GetNextWeekDayInNthWeekInTheMonth(recurrenceInfo: recurrenceInfo, fromDate: lastDate, weekNumberInTheMonth: weekNumberInTheMonth);
+                        }
+                    //}
+
                 }
             }
             else if (recurrenceInfo.Type == ReccurrenceType.Yearly)
@@ -192,6 +196,44 @@ namespace Foustiga.WPF.Scheduler
 
             return nextOccurrence;
         }
+        private DateTime GetNthWorkDayInTheMonth(IRecurrenceInfo recurrenceInfo, DateTime fromDate, int nthWorkingDay)
+        {
+            DateTime previousDate = new DateTime(fromDate.Year, fromDate.Month, DateTime.DaysInMonth(fromDate.Year, fromDate.Month));//.AddDays(1); //1st day of the next month.
+            DateTime firstWorkingDayOfTheMonth = previousDate;
+            if (previousDate.DayOfWeek >= DayOfWeek.Monday && previousDate.DayOfWeek < DayOfWeek.Friday) { firstWorkingDayOfTheMonth = previousDate.AddDays(1); }
+            else if (previousDate.DayOfWeek == DayOfWeek.Friday) { firstWorkingDayOfTheMonth = previousDate.AddDays(3); }
+            else if (previousDate.DayOfWeek == DayOfWeek.Saturday) { firstWorkingDayOfTheMonth = previousDate.AddDays(2); }
+            else if (previousDate.DayOfWeek == DayOfWeek.Sunday) { firstWorkingDayOfTheMonth = previousDate.AddDays(1); }
+
+            DateTime nextDate = previousDate;
+
+            int i = 1;
+            do 
+            {
+                if (previousDate.DayOfWeek >= DayOfWeek.Monday && previousDate.DayOfWeek < DayOfWeek.Friday) { nextDate = previousDate.AddDays(1); }
+                else if (previousDate.DayOfWeek == DayOfWeek.Friday) { nextDate = previousDate.AddDays(3); }
+                else if (previousDate.DayOfWeek == DayOfWeek.Saturday) { nextDate = previousDate.AddDays(2); }
+                else if (previousDate.DayOfWeek == DayOfWeek.Sunday) { nextDate = previousDate.AddDays(1); }
+                if (firstWorkingDayOfTheMonth.Month != nextDate.Month)
+                { nextDate = firstWorkingDayOfTheMonth; break; }
+                previousDate = nextDate;
+                i++;
+            } while (i < nthWorkingDay);
+            return nextDate;
+
+        }
+        private DateTime GetNextWeekendDayInNthWeekInTheMonth(IRecurrenceInfo recurrenceInfo, DateTime fromDate, int weekNumberInTheMonth)
+        {
+            DateTime nextOccurrence = fromDate;
+            List<DateTime> nextOccurrences = new();
+            if (recurrenceInfo.WeekDays.HasFlag(WeekDays.Saturday)) { nextOccurrences.Add(nthDay(nextOccurrence, weekNumberInTheMonth, DayOfWeek.Saturday)); }
+            if (recurrenceInfo.WeekDays.HasFlag(WeekDays.Sunday)) { nextOccurrences.Add(nthDay(nextOccurrence, weekNumberInTheMonth, DayOfWeek.Sunday)); }
+
+            nextOccurrence = (from occ in nextOccurrences orderby occ descending select occ).FirstOrDefault();
+            return nextOccurrence;
+        }
+
+
         private enum DayType
         {
             WorkDay,

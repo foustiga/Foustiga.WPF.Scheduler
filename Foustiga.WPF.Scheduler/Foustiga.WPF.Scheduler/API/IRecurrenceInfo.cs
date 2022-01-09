@@ -1,4 +1,5 @@
 ﻿using Foustiga.WPF.Scheduler.DataModel;
+using Foustiga.WPF.Scheduler.Foundation.Enums;
 
 using System;
 using System.ComponentModel;
@@ -70,9 +71,24 @@ namespace Foustiga.WPF.Scheduler.API
 
     public enum ReccurrenceType
     {
+        [EnumInfo(ResourceType = typeof(Assets.Resources),//where Resources is the Resources file to look into.
+            Display = nameof(Assets.Resources.Enum_ReccurrenceType_Daily),
+            Tooltip = nameof(Assets.Resources.Enum_ReccurrenceType_Daily_Tooltip))]
         Daily, //The recurring appointment reoccurs on a daily base.
+
+        [EnumInfo(ResourceType = typeof(Assets.Resources),//where Resources is the Resources file to look into.
+            Display = nameof(Assets.Resources.Enum_ReccurrenceType_Weekly),
+            Tooltip = nameof(Assets.Resources.Enum_ReccurrenceType_Weekly_Tooltip))]
         Weekly, //The recurring appointment reoccurs on a weekly base.
+
+        [EnumInfo(ResourceType = typeof(Assets.Resources),//where Resources is the Resources file to look into.
+            Display = nameof(Assets.Resources.Enum_ReccurrenceType_Monthly),
+            Tooltip = nameof(Assets.Resources.Enum_ReccurrenceType_Monthly_Tooltip))]
         Monthly, //The recurring appointment reoccurs on a monthly base.
+
+        [EnumInfo(ResourceType = typeof(Assets.Resources),//where Resources is the Resources file to look into.
+            Display = nameof(Assets.Resources.Enum_ReccurrenceType_Yearly),
+            Tooltip = nameof(Assets.Resources.Enum_ReccurrenceType_Yearly_Tooltip))]
         Yearly//, //The recurring appointment reoccurs on an yearly base.
         //Minutely, //The recurring appointment reoccurs on a minute base.
         //Hourly //The recurring appointment reoccurs on an hourly base.
@@ -81,25 +97,71 @@ namespace Foustiga.WPF.Scheduler.API
     [Flags]
     public enum WeekDays
     {
+        [EnumInfo(ResourceType = typeof(Assets.Resources),//where Resources is the Resources file to look into.
+           Display = nameof(Assets.Resources.Enum_WeekDays_Sunday))] 
         Sunday = 1, //Specifies Sunday.
+
+        [EnumInfo(ResourceType = typeof(Assets.Resources),//where Resources is the Resources file to look into.
+            Display = nameof(Assets.Resources.Enum_WeekDays_Monday))]
         Monday = 2, //Specifies Monday.
+
+        [EnumInfo(ResourceType = typeof(Assets.Resources),//where Resources is the Resources file to look into.
+            Display = nameof(Assets.Resources.Enum_WeekDays_Tuesday))]
         Tuesday = 4, //Specifies Tuesday.
+
+        [EnumInfo(ResourceType = typeof(Assets.Resources),//where Resources is the Resources file to look into.
+            Display = nameof(Assets.Resources.Enum_WeekDays_Wednesday))]
         Wednesday = 8, //Specifies Wednesday.
+
+        [EnumInfo(ResourceType = typeof(Assets.Resources),//where Resources is the Resources file to look into.
+            Display = nameof(Assets.Resources.Enum_WeekDays_Thursday))]
         Thursday = 16, //Specifies Thursday.
+
+        [EnumInfo(ResourceType = typeof(Assets.Resources),//where Resources is the Resources file to look into.
+            Display = nameof(Assets.Resources.Enum_WeekDays_Friday))]
         Friday = 32, //Specifies Friday.
+
+        [EnumInfo(ResourceType = typeof(Assets.Resources),//where Resources is the Resources file to look into.
+            Display = nameof(Assets.Resources.Enum_WeekDays_Saturday))]
         Saturday = 64, //Specifies Saturday.
+
+        [EnumInfo(ResourceType = typeof(Assets.Resources),//where Resources is the Resources file to look into.
+            Display = nameof(Assets.Resources.Enum_WeekDays_WeekendDays))]
         WeekendDays = Sunday | Saturday, //Specifies Saturday and Sunday.
+
+        [EnumInfo(ResourceType = typeof(Assets.Resources),//where Resources is the Resources file to look into.
+            Display = nameof(Assets.Resources.Enum_WeekDays_WorkDays))]
         WorkDays = Monday | Tuesday | Wednesday | Thursday | Friday, //Specifies work days (Monday, Tuesday, Wednesday, Thursday and Friday).
+
+        [EnumInfo(ResourceType = typeof(Assets.Resources),//where Resources is the Resources file to look into.
+            Display = nameof(Assets.Resources.Enum_WeekDays_EveryDay))]
         EveryDay = WeekendDays | WorkDays, //Specifies every day of the week.
     }
 
     public enum WeekOfMonth
     {
+        [EnumInfo(ResourceType = typeof(Assets.Resources),//where Resources is the Resources file to look into.
+            Display = nameof(Assets.Resources.Enum_WeekOfMonth_None))]
         None, //There isn’t any recurrence rule based upon the weeks in a month.
+
+        [EnumInfo(ResourceType = typeof(Assets.Resources),//where Resources is the Resources file to look into.
+            Display = nameof(Assets.Resources.Enum_WeekOfMonth_First))]
         First, //The recurring event will occur once a month, on the specified day or days of the first week in the month.
+
+        [EnumInfo(ResourceType = typeof(Assets.Resources),//where Resources is the Resources file to look into.
+           Display = nameof(Assets.Resources.Enum_WeekOfMonth_Second))]
         Second, //The recurring event will occur once a month, on the specified day or days of the second week in the month.
+
+        [EnumInfo(ResourceType = typeof(Assets.Resources),//where Resources is the Resources file to look into.
+           Display = nameof(Assets.Resources.Enum_WeekOfMonth_Third))]
         Third, //The recurring event will occur once a month, on the specified day or days of the third week in the month.
+
+        [EnumInfo(ResourceType = typeof(Assets.Resources),//where Resources is the Resources file to look into.
+            Display = nameof(Assets.Resources.Enum_WeekOfMonth_Fourth))]
         Fourth, //The recurring event will occur once a month, on the specified day or days of the fourth week in the month.
+
+        [EnumInfo(ResourceType = typeof(Assets.Resources),//where Resources is the Resources file to look into.
+            Display = nameof(Assets.Resources.Enum_WeekOfMonth_Last))]
         Last //The recurring event will occur once a month, on the specified day or days of the last week in the month.
     }
 

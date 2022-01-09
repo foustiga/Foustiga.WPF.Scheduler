@@ -4,8 +4,10 @@
             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
-             xmlns:WPF_Image="clr-namespace:Foustiga.WPF.Scheduler.Foundation.Image"
-  
+            xmlns:WPF_Image="clr-namespace:Foustiga.WPF.Scheduler.Foundation.Image"
+             xmlns:resources="clr-namespace:Foustiga.WPF.Scheduler.Assets"
+ 
+            
             xmlns:local="clr-namespace:Foustiga.WPF.Scheduler"
             xmlns:local_enum="clr-namespace:Foustiga.WPF.Scheduler.API"
             xmlns:enumHelper="clr-namespace:Foustiga.WPF.Scheduler.Foundation.Enums"
@@ -51,8 +53,8 @@
     
     <Grid >
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />            <!--View header-->
@@ -60,51 +62,18 @@
             <RowDefinition Height="Auto"/>            <!--Status bar-->
         </Grid.RowDefinitions>
 
-        <!--<Grid Grid.Row="0" Visibility="Collapsed" >
-            --><!--View header, contains Header & Command buttons area--><!--
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />                --><!--Header--><!--
-                <RowDefinition Height="Auto"/>                --><!--Command buttons--><!--
-            </Grid.RowDefinitions>
-            <Grid Grid.Row="0" >
-                <ContentControl Content="{Binding ViewHeader_ViewModel.View}"  />
-            </Grid>
-            <Grid Grid.Row="1" >
-                <Grid.Background>
-                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InactiveCaptionTextColorKey}}" Opacity="0.3"/>
-                </Grid.Background>
-                <StackPanel  HorizontalAlignment="Left" Orientation="Horizontal"  Margin="0,2"   >
-                    --><!--<crud_buttons:CRUD_ButtonView Command="{Binding CommandEdit}" Button_Type="Edit" Margin="0,0,0,0" />
-                    <crud_buttons:CRUD_ButtonView Command="{Binding CommandSave}" Button_Type="Save" Margin="5,0,0,0"/>
-                    <crud_buttons:CRUD_ButtonView Command="{Binding CommandUndo}" Button_Type="Undo" Margin="5,0,0,0"/>
-                    <crud_buttons:CRUD_ButtonView Command="{Binding CommandDelete}" Button_Type="Delete" Margin="5,0,0,0"/>--><!--
-                </StackPanel>
-            </Grid>
-        </Grid>-->
 
         <Grid Grid.Row="1" >
             <!--View region-->
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>                <!--View Data-->
-            </Grid.RowDefinitions>
 
-            <!--<Grid Grid.Row="0" Visibility="{Binding DataModel.HasErrors, Converter={StaticResource BooleanToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}">
-                --><!--Errors placement--><!--
-                <StackPanel Grid.Row="1" Orientation="Vertical"  >
-                    <TextBlock Text="{Binding DataModel.Errors, Mode=OneWay}" Background="Wheat" Foreground="Red"
-						            TextWrapping="Wrap" />
-                </StackPanel>
-            </Grid>-->
-
-            <Grid Grid.Row="0" DataContext="{Binding DataModel}" >
-                <ScrollViewer  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" >
+            <Grid  DataContext="{Binding DataModel}" >
                 <Grid Margin="5">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"  />
+                            <ColumnDefinition Width="*"  />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-
-                        <GroupBox Grid.Column="0" Header="Recurrence pattern">
+                        <WrapPanel Grid.Column="0" Orientation="Horizontal" >
+                        <GroupBox  Header="{x:Static resources:Resources.Recurrence_pattern}">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"  />
@@ -118,13 +87,17 @@
                                     <RowDefinition Height="Auto" MinHeight="25" />
                                 </Grid.RowDefinitions>
 
-                                <RadioButton Grid.Row="0" Grid.Column="0" GroupName="RecurrenceType" Content="Daily" VerticalAlignment="Center"
+                                <RadioButton Grid.Row="0" Grid.Column="0" GroupName="RecurrenceType" Content="{x:Static resources:Resources.Enum_ReccurrenceType_Daily}" 
+                                             ToolTip="{x:Static resources:Resources.Enum_ReccurrenceType_Daily_Tooltip}" VerticalAlignment="Center"
                                              IsChecked="{Binding Type, Converter={StaticResource recurrenceInfo_Type_Converter}, ConverterParameter=Daily }"/>
-                                <RadioButton Grid.Row="1" Grid.Column="0" GroupName="RecurrenceType" Content="Weekly" VerticalAlignment="Center"
+                                <RadioButton Grid.Row="1" Grid.Column="0" GroupName="RecurrenceType" Content="{x:Static resources:Resources.Enum_ReccurrenceType_Weekly}" 
+                                            ToolTip="{x:Static resources:Resources.Enum_ReccurrenceType_Weekly_Tooltip}" VerticalAlignment="Center"
                                               IsChecked="{Binding Type, Converter={StaticResource recurrenceInfo_Type_Converter}, ConverterParameter=Weekly }"/>
-                                <RadioButton Grid.Row="2" Grid.Column="0" GroupName="RecurrenceType" Content="Monthly" VerticalAlignment="Center"
+                                <RadioButton Grid.Row="2" Grid.Column="0" GroupName="RecurrenceType" Content="{x:Static resources:Resources.Enum_ReccurrenceType_Monthly}" 
+                                            ToolTip="{x:Static resources:Resources.Enum_ReccurrenceType_Monthly_Tooltip}" VerticalAlignment="Center"
                                               IsChecked="{Binding Type, Converter={StaticResource recurrenceInfo_Type_Converter}, ConverterParameter=Monthly }"/>
-                                <RadioButton Grid.Row="3" Grid.Column="0" GroupName="RecurrenceType" Content="Yearly" VerticalAlignment="Center"
+                                <RadioButton Grid.Row="3" Grid.Column="0" GroupName="RecurrenceType" Content="{x:Static resources:Resources.Enum_ReccurrenceType_Yearly}" 
+                                            ToolTip="{x:Static resources:Resources.Enum_ReccurrenceType_Yearly_Tooltip}" VerticalAlignment="Center"
                                               IsChecked="{Binding Type, Converter={StaticResource recurrenceInfo_Type_Converter}, ConverterParameter=Yearly }"/>
 
                                 <!--Daily Type details-->
@@ -137,7 +110,7 @@
                                         <RowDefinition Height="Auto" MinHeight="25" />
                                     </Grid.RowDefinitions>
                                     <StackPanel Grid.Row="0" Orientation="Horizontal">
-                                        <RadioButton  GroupName="WeekDays" Content="Every" VerticalAlignment="Center"
+                                        <RadioButton  GroupName="WeekDays" Content="{x:Static resources:Resources.Daily_Every}" VerticalAlignment="Center"
                                                 IsChecked="{Binding Path=DataContext.WeekDays_IsEveryDay, RelativeSource={RelativeSource AncestorType=UserControl}}" 
                                                 Margin="0,0,10,0"/>
                                         <!--<TextBox Text="{Binding Periodicity}" VerticalAlignment="Center"/>-->
@@ -145,9 +118,9 @@
                                                 Step="1" MinValue="1" MaxValue="31" 
                                                 HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,10,0"/>
 
-                                        <TextBlock Text="day(s)" VerticalAlignment="Center"/>
+                                        <TextBlock Text="{x:Static resources:Resources.Daily_Every_day_s}" VerticalAlignment="Center"/>
                                     </StackPanel>
-                                    <RadioButton Grid.Row="1"   GroupName="WeekDays" Content="Every weekday" VerticalAlignment="Center"
+                                    <RadioButton Grid.Row="1"   GroupName="WeekDays" Content="{x:Static resources:Resources.Daily_EveryWeekday}" VerticalAlignment="Center"
                                         IsChecked="{Binding Path=DataContext.WeekDays_IsWeekDays, RelativeSource={RelativeSource AncestorType=UserControl}}" />
 
                                 </Grid>
@@ -162,22 +135,22 @@
                                         <RowDefinition Height="Auto" MinHeight="25" />
                                     </Grid.RowDefinitions>
                                     <StackPanel Grid.Row="0" Orientation="Horizontal">
-                                        <TextBlock Text="Recur every" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                                        <TextBlock Text="{x:Static resources:Resources.Weekly_RecurEvery}" VerticalAlignment="Center" Margin="0,0,10,0"/>
                                         <!--<TextBox Text="{Binding Periodicity}" VerticalAlignment="Center"/>-->
                                         <syncfusion:UpDown Value="{Binding Periodicity}" NumberDecimalDigits="0"
                                                 Step="1" MinValue="1" MaxValue="31" 
                                                 HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,10,0"/>
 
-                                        <TextBlock Text="week(s) on:" VerticalAlignment="Center"/>
+                                        <TextBlock Text="{x:Static resources:Resources.Weekly_RecurEvery_WeekOn}" VerticalAlignment="Center"/>
                                     </StackPanel>
                                     <WrapPanel Grid.Row="1"   Orientation="Horizontal">
-                                        <CheckBox Content="Monday" IsChecked="{Binding Path=DataContext.IsWeekDays_Monday, RelativeSource={RelativeSource AncestorType=UserControl} }" Margin="0,0,10,0"/>
-                                        <CheckBox Content="Tuesday" IsChecked="{Binding Path=DataContext.IsWeekDays_Tuesday, RelativeSource={RelativeSource AncestorType=UserControl} }" Margin="0,0,10,0"/>
-                                        <CheckBox Content="Wednesday" IsChecked="{Binding Path=DataContext.IsWeekDays_Wednesday, RelativeSource={RelativeSource AncestorType=UserControl} }" Margin="0,0,10,0"/>
-                                        <CheckBox Content="Thursday" IsChecked="{Binding Path=DataContext.IsWeekDays_Thursday, RelativeSource={RelativeSource AncestorType=UserControl} }" Margin="0,0,10,0"/>
-                                        <CheckBox Content="Friday" IsChecked="{Binding Path=DataContext.IsWeekDays_Friday, RelativeSource={RelativeSource AncestorType=UserControl} }" Margin="0,0,10,0"/>
-                                        <CheckBox Content="Saturday" IsChecked="{Binding Path=DataContext.IsWeekDays_Saturday, RelativeSource={RelativeSource AncestorType=UserControl} }" Margin="0,0,10,0"/>
-                                        <CheckBox Content="Sunday" IsChecked="{Binding Path=DataContext.IsWeekDays_Sunday, RelativeSource={RelativeSource AncestorType=UserControl} }" Margin="0,0,10,0"/>
+                                        <CheckBox Content="{x:Static resources:Resources.Weekly_Monday}" IsChecked="{Binding Path=DataContext.IsWeekDays_Monday, RelativeSource={RelativeSource AncestorType=UserControl} }" Margin="0,0,10,0"/>
+                                        <CheckBox Content="{x:Static resources:Resources.Weekly_Tuesday}" IsChecked="{Binding Path=DataContext.IsWeekDays_Tuesday, RelativeSource={RelativeSource AncestorType=UserControl} }" Margin="0,0,10,0"/>
+                                        <CheckBox Content="{x:Static resources:Resources.Weekly_Wedenesday}" IsChecked="{Binding Path=DataContext.IsWeekDays_Wednesday, RelativeSource={RelativeSource AncestorType=UserControl} }" Margin="0,0,10,0"/>
+                                        <CheckBox Content="{x:Static resources:Resources.Weekly_Thursday}" IsChecked="{Binding Path=DataContext.IsWeekDays_Thursday, RelativeSource={RelativeSource AncestorType=UserControl} }" Margin="0,0,10,0"/>
+                                        <CheckBox Content="{x:Static resources:Resources.Weekly_Friday}" IsChecked="{Binding Path=DataContext.IsWeekDays_Friday, RelativeSource={RelativeSource AncestorType=UserControl} }" Margin="0,0,10,0"/>
+                                        <CheckBox Content="{x:Static resources:Resources.Weekly_Saturday}" IsChecked="{Binding Path=DataContext.IsWeekDays_Saturday, RelativeSource={RelativeSource AncestorType=UserControl} }" Margin="0,0,10,0"/>
+                                        <CheckBox Content="{x:Static resources:Resources.Weekly_Sunday}" IsChecked="{Binding Path=DataContext.IsWeekDays_Sunday, RelativeSource={RelativeSource AncestorType=UserControl} }" Margin="0,0,10,0"/>
                                     </WrapPanel>
                                     
                                 </Grid>
@@ -192,21 +165,21 @@
                                         <RowDefinition Height="Auto" MinHeight="25" />
                                     </Grid.RowDefinitions>
                                     <StackPanel Grid.Row="0" Orientation="Horizontal">
-                                        <RadioButton  GroupName="WeekOfMonth" Content="Day" VerticalAlignment="Center"
+                                        <RadioButton  GroupName="WeekOfMonth" Content="{x:Static resources:Resources.Monthly_None_Day}" VerticalAlignment="Center"
                                                 IsChecked="{Binding Path=DataContext.WeekOfMonth_IsNone, RelativeSource={RelativeSource AncestorType=UserControl}}" 
                                                 Margin="0,0,10,0"/>
                                         <syncfusion:UpDown Value="{Binding DayNumber}" NumberDecimalDigits="0"
                                                 Step="1" MinValue="1" MaxValue="31" 
                                                 HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                                        <TextBlock Text="of every" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                                        <TextBlock Text="{x:Static resources:Resources.Monthly_None_OfEvery}" VerticalAlignment="Center" Margin="0,0,10,0"/>
                                         <syncfusion:UpDown Value="{Binding Periodicity}" NumberDecimalDigits="0"
                                                 Step="1" MinValue="1" MaxValue="12" 
                                                 HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                                        <TextBlock Text="month(s)" VerticalAlignment="Center"/>
+                                        <TextBlock Text="{x:Static resources:Resources.Monthly_None_month}" VerticalAlignment="Center"/>
 
                                     </StackPanel>
                                     <StackPanel Grid.Row="1" Orientation="Horizontal">
-                                        <RadioButton GroupName="WeekOfMonth" Content="The" VerticalAlignment="Center"
+                                        <RadioButton GroupName="WeekOfMonth" Content="{x:Static resources:Resources.Monthly_The}" VerticalAlignment="Center"
                                             IsChecked="{Binding  Path=DataContext.WeekOfMonth_IsNotNone, RelativeSource={RelativeSource AncestorType=UserControl}}" Margin="0,0,10,0" />
                                         <ComboBox VerticalAlignment="Center" Margin="0,0,10,0"
 									                ItemsSource="{Binding Source={StaticResource enumWeekOfMonth}}" 
@@ -262,11 +235,11 @@
                                             </ComboBox.ItemTemplate>
                                         </ComboBox>-->
 
-                                        <TextBlock Text="of every" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                                        <TextBlock Text="{x:Static resources:Resources.Monthly_None_OfEvery}" VerticalAlignment="Center" Margin="0,0,10,0"/>
                                         <syncfusion:UpDown Value="{Binding Periodicity}" NumberDecimalDigits="0"
                                                 Step="1" MinValue="1" MaxValue="31" 
                                                 HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                                        <TextBlock Text="month(s)" VerticalAlignment="Center"/>
+                                        <TextBlock Text="{x:Static resources:Resources.Monthly_None_month}" VerticalAlignment="Center"/>
 
                                     </StackPanel>
                                 </Grid>
@@ -282,7 +255,7 @@
                                         <RowDefinition Height="Auto" MinHeight="25" />
                                     </Grid.RowDefinitions>
                                     <StackPanel Grid.Row="0" Orientation="Horizontal">
-                                        <RadioButton  GroupName="WeekOfMonth" Content="Every" VerticalAlignment="Center"
+                                        <RadioButton  GroupName="WeekOfMonth" Content="{x:Static resources:Resources.Yearly_None}" VerticalAlignment="Center"
                                                 IsChecked="{Binding Path=DataContext.WeekOfMonth_IsNone, RelativeSource={RelativeSource AncestorType=UserControl}}" 
                                                 Margin="0,0,10,0"/>
                                         <ComboBox VerticalAlignment="Center" Margin="0,0,10,0"
@@ -309,7 +282,7 @@
 
                                     </StackPanel>
                                     <StackPanel Grid.Row="1" Orientation="Horizontal">
-                                        <RadioButton GroupName="WeekOfMonth" Content="The" VerticalAlignment="Center"
+                                        <RadioButton GroupName="WeekOfMonth" Content="{x:Static resources:Resources.Yearly_The}" VerticalAlignment="Center"
                                             IsChecked="{Binding  Path=DataContext.WeekOfMonth_IsNotNone, RelativeSource={RelativeSource AncestorType=UserControl}}" Margin="0,0,10,0" />
                                         <ComboBox VerticalAlignment="Center" Margin="0,0,10,0"
 									                ItemsSource="{Binding Source={StaticResource enumWeekOfMonth}}" 
@@ -347,7 +320,7 @@
                                             </ComboBox.ItemTemplate>
                                         </ComboBox>
 
-                                        <TextBlock Text="of" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                                        <TextBlock Text="{x:Static resources:Resources.Yearly_The_of}" VerticalAlignment="Center" Margin="0,0,10,0"/>
                                         <ComboBox VerticalAlignment="Center" Margin="0,0,10,0"
 									                ItemsSource="{Binding Source={StaticResource enumMonthsList}}" 
 									                SelectedValue="{Binding Path=DataContext.MonthNumber, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay}"
@@ -374,7 +347,7 @@
 
                         </GroupBox>
 
-                        <GroupBox Grid.Column="1" Header="Range of recurrence">
+                        <GroupBox Header="{x:Static resources:Resources.RangeOfRecurrence}">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"  />
@@ -389,23 +362,23 @@
 
                                 <StackPanel Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Margin="0,0,10,0">
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="Start:" VerticalAlignment="Center" />
-                                        <Image  Source="{Binding Path=DataContext.InfoIcon,  
+                                        <TextBlock Text="{x:Static resources:Resources.Range_StartAfter}" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                                        <!--<Image  Source="{Binding Path=DataContext.InfoIcon,  
                                             RelativeSource={RelativeSource AncestorType=UserControl}, 
                                             Converter={StaticResource DrawingImageToImageSource}}" Margin="0,0,10,0" Height="16" VerticalAlignment="Center"
                                             ToolTip="Next occurrence will be strictly higher than start date."
-                                        />
+                                        />-->
                                         <DatePicker SelectedDate="{Binding Start}"  />
                                     </StackPanel>
                                     <!--<TextBlock Text="Next occurrence will be strictly higher than start date." TextWrapping="Wrap"/>-->
                                 </StackPanel>
 
                                 <!--Range recurrence-->
-                                <RadioButton Grid.Row="0" Grid.Column="1" GroupName="RecurrenceRange" Content="No end date" VerticalAlignment="Center"
+                                <RadioButton Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" GroupName="RecurrenceRange" Content="{x:Static resources:Resources.Range_NoEndDate}" VerticalAlignment="Center"
                                              IsChecked="{Binding Range, Converter={StaticResource recurrenceInfo_RecurrenceRange_Converter}, ConverterParameter=NoEndDate }" Margin="0,0,10,0"/>
-                                <RadioButton Grid.Row="1" Grid.Column="1" GroupName="RecurrenceRange" Content="End after:" VerticalAlignment="Center"
+                                <RadioButton Grid.Row="1" Grid.Column="1" GroupName="RecurrenceRange" Content="{x:Static resources:Resources.Range_EndAfter}" VerticalAlignment="Center"
                                               IsChecked="{Binding Range, Converter={StaticResource recurrenceInfo_RecurrenceRange_Converter}, ConverterParameter=OccurrenceCount }" Margin="0,0,10,0"/>
-                                <RadioButton Grid.Row="2" Grid.Column="1" GroupName="RecurrenceRange" Content="End by:" VerticalAlignment="Center"
+                                <RadioButton Grid.Row="2" Grid.Column="1" GroupName="RecurrenceRange" Content="{x:Static resources:Resources.Range_EndBy}" VerticalAlignment="Center"
                                               IsChecked="{Binding Range, Converter={StaticResource recurrenceInfo_RecurrenceRange_Converter}, ConverterParameter=EndByDate }" Margin="0,0,10,0"/>
 
                                 <!--Occurrence info-->
@@ -413,102 +386,19 @@
                                     <syncfusion:UpDown  Value="{Binding OccurrenceCount}" NumberDecimalDigits="0"
                                                 Step="1" MinValue="1" MaxValue="100" 
                                                 HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                                    <TextBlock Text="occurrences" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{x:Static resources:Resources.Range_EndAfter_Occurrences}" VerticalAlignment="Center"/>
                                 </StackPanel>
                                 <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Horizontal">
                                     <DatePicker SelectedDate="{Binding End}"  />
                                 </StackPanel>
 
-
-
-
-                                <Grid Grid.Column="1" Grid.RowSpan="4" Margin="20,0,0,0"
-                                      Visibility="Collapsed">
-                                    <!--Visibility="{Binding Path=DataContext.IsType_Daily, RelativeSource={RelativeSource AncestorType=UserControl}, 
-                                            Converter={StaticResource BooleanToVisibilityConverter},
-                                            UpdateSourceTrigger=PropertyChanged, Mode=OneWay}">-->
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" MinHeight="25" />
-                                        <RowDefinition Height="Auto" MinHeight="25" />
-                                    </Grid.RowDefinitions>
-                                    <StackPanel Grid.Row="0" Orientation="Horizontal">
-                                        <RadioButton  GroupName="WeekDays" Content="Every" VerticalAlignment="Center"
-                                                IsChecked="{Binding Path=DataContext.WeekDays_IsEveryDay, RelativeSource={RelativeSource AncestorType=UserControl}}" 
-                                                Margin="0,0,10,0"/>
-                                        <!--<TextBox Text="{Binding Periodicity}" VerticalAlignment="Center"/>-->
-                                        <syncfusion:UpDown Value="{Binding Periodicity}" NumberDecimalDigits="0"
-                                                Step="1" MinValue="1" MaxValue="31" 
-                                                HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,10,0"/>
-
-                                        <TextBlock Text="day(s)" VerticalAlignment="Center"/>
-                                    </StackPanel>
-                                    <RadioButton Grid.Row="1"   GroupName="WeekDays" Content="Every weekday" VerticalAlignment="Center"
-                                        IsChecked="{Binding Path=DataContext.WeekDays_IsWeekDays, RelativeSource={RelativeSource AncestorType=UserControl}}" />
-
-                                </Grid>
-
-
                             </Grid>
 
                         </GroupBox>
+                        </WrapPanel>
 
-                        <!--<StackPanel Orientation="Vertical">
-                        <syncfusion:TabControlExt CloseButtonType="Hide" ShowTabItemContextMenu="False" ShowTabListContextMenu="False">
-                            --><!--Tab Id--><!--
-                            <syncfusion:TabItemExt Header="Id">
-                                <ScrollViewer  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" >
-                                    <Grid IsEnabled="{Binding IsEditing}">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"  />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" MinHeight="25" />
-                                        <RowDefinition Height="Auto" MinHeight="25" />
-                                        <RowDefinition Height="Auto" MinHeight="25" />
-                                        <RowDefinition Height="Auto" MinHeight="25" />
-                                        <RowDefinition Height="Auto" MinHeight="25" />
-                                    </Grid.RowDefinitions>
-
-                                    --><!--<TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static resources:Resources.Bank}" VerticalAlignment="Center" Margin="0,0,5,0" />
-                                    <StackPanel  Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
-                                            <TextBox  Text="{Binding Name}"     VerticalAlignment="Center"  />
-                                    </StackPanel>--><!--
-
-                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Partner Id" VerticalAlignment="Center" Margin="0,0,5,0" />
-                                    <StackPanel  Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
-                                        --><!--<TextBox Text="{Binding Partner_Id}"  VerticalAlignment="Center"  />--><!--
-                                        <ContentControl Content="{Binding Path=DataContext.PartnerComboBox.View, 
-                                                RelativeSource={RelativeSource AncestorType=UserControl}, 
-                                                UpdateSourceTrigger=PropertyChanged}" />
-                                    </StackPanel>
-
-                                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Partner country currency" VerticalAlignment="Center" Margin="0,0,5,0" />
-                                            <TextBox  Grid.Row="2" Grid.Column="1" Text="{Binding Path=DataContext.PartnerComboBox.CountryCurrency,
-                                                RelativeSource={RelativeSource AncestorType=UserControl}, 
-                                                UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" />
-
-
-                                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Contacts" VerticalAlignment="Center" Margin="0,0,5,0" />
-                                    <StackPanel  Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
-                                        <TextBox Text="{Binding Contacts, Mode=TwoWay}" 
-						                    AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"/>
-                                    </StackPanel>
-
-                                    </Grid>
-                                </ScrollViewer>
-                            </syncfusion:TabItemExt>
-                        </syncfusion:TabControlExt>
-
-                        --><!--Notes infos row--><!--
-                            <StackPanel Orientation="Vertical"  IsEnabled="{Binding IsEditing}">
-                                <TextBlock Text="{x:Static resources:Resources.Notes}"  VerticalAlignment="Top" />
-                                <TextBox Text="{Binding Notes, Mode=TwoWay}" 
-						             AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"/>
-                        </StackPanel>
-                    </StackPanel>-->
-                </Grid>
-            </ScrollViewer>
+                    </Grid>
+                    
             </Grid>
         </Grid>
 
