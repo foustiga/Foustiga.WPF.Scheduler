@@ -2,9 +2,11 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net5.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <AssemblyVersion>1.0.0.5</AssemblyVersion>
+    <FileVersion>2024.1.12.0836</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
